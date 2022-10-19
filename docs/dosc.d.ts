@@ -4,6 +4,11 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+// declare module 'vitepress/dist/client/theme-default/index' {
+//   const demoblock: any
+//   export default demoblock
+// }
+
 // declare module 'vitepress-theme-demoblock/components/Demo.vue' {
 //   const demoblock: any
 //   export default demoblock
