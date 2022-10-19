@@ -6,15 +6,15 @@ module.exports = {
   singleQuote: true, // 单引号 default: false
   // quoteProps: 'as-needed',
   // jsxSingleQuote: false,
-  trailingComma: "none", // 未尾分号 default: es5    all | none | es5
+  trailingComma: 'none', // 未尾分号 default: es5    all | none | es5
   // bracketSpacing: true,
   // bracketSameLine: false,
   // jsxBracketSameLine: false,
-  arrowParens: "avoid", // default: always
+  arrowParens: 'avoid', // default: always
   // insertPragma: false,
   // requirePragma: false,
-  proseWrap: "never",
+  proseWrap: 'never',
   // htmlWhitespaceSensitivity: 'css',
   // vueIndentScriptAndStyle: false,  // .vue 缩进
-  endOfLine: "auto", // default lf
-};
+  endOfLine: 'auto', // default lf
+}
