@@ -3,6 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 // import HelloWorld from './components/HelloWorld.vue'
 import TestJSX from './components/TestJSX'
+// import { Button } from './button/index'
 </script>
 
 <template>
@@ -16,6 +17,10 @@ import TestJSX from './components/TestJSX'
   </div>
   <HelloWorld msg="Vite + Vue" /> -->
   <TestJSX></TestJSX>
+  <D-button type="primary" size="small">确定</D-button>
+  <D-button type="primary" size="medium">确定</D-button>
+  <!-- <Button type="primary">局部引入</Button> -->
+  <D-button>取消</D-button>
 </template>
 
 <style scoped>
