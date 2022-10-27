@@ -5,21 +5,21 @@ const path = require('path')
 const createPackageJson = (outputDir, name) => {
   // 根据传入name决定包名、主文件和主模块名称
   const fileStr = `{
-    "name": "sheep-ui",
+    "name": "${name ? name : 'd-ui'}",
     "version": "0.0.0",
-    "main": "sheep-ui.umd.cjs",
-    "module": "sheep-ui.js",
-    "author": "杨村长",
+    "main": "${name ? 'index.umd.cjs' : 'd-ui.umd.cjs'}",
+    "module": "${name ? 'index.js' : 'd-ui.js'}",
+    "author": "liuwenlong916",
     "github": "",
-    "description": "羊村第一个组件库Sheep-UI，以后村里羊圈能不能建好就看它了！",
+    "description": "第一个组件库",
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/57code/sheep-ui.git"
+      "url": "git+https://github.com/liuwenlong916/sheep.git"
     },
     "keywords": ["vue3", "组件库", "tsx", "UI"],
     "license": "ISC",
     "bugs": {
-      "url": "https://github.com/57code/sheep-ui/issues"
+      "url": "https://github.com/liuwenlong916/sheep/issues"
     }
   }`
   // 存在包名称，给单组件生成package.json文件
@@ -37,4 +37,4 @@ const createPackageJson = (outputDir, name) => {
     )
   }
 }
-module.exports = createPackageJson
+module.exports.createPackageJson = createPackageJson

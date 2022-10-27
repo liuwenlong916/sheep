@@ -22,5 +22,8 @@ module.exports = {
   //     sourceType: 'module'
   //   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: { '@typescript-eslint/ban-types': 'off' }
+  rules: {
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-var-requires': 'off'
+  }
 }
