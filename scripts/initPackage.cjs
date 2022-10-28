@@ -5,10 +5,10 @@ const path = require('path')
 const createPackageJson = (outputDir, name) => {
   // 根据传入name决定包名、主文件和主模块名称
   const fileStr = `{
-    "name": "${name ? name : 'd-ui'}",
+    "name": "${name ? name : 'db-sheep-ui'}",
     "version": "0.0.0",
-    "main": "${name ? 'index.umd.cjs' : 'd-ui.umd.cjs'}",
-    "module": "${name ? 'index.js' : 'd-ui.js'}",
+    "main": "${name ? 'index.umd.cjs' : 'db-sheep-ui.umd.cjs'}",
+    "module": "${name ? 'index.js' : 'db-sheep-ui.js'}",
     "author": "liuwenlong916",
     "github": "",
     "description": "第一个组件库",

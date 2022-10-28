@@ -10,4 +10,6 @@ import Button from './button'
 //按需打包
 // import sheepUI from '../build/button'
 
+// import sheepUI from 'db-sheep-ui'
+
 createApp(App).use(Button).mount('#app')

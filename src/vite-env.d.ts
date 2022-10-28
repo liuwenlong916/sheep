@@ -5,3 +5,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+// import sheepUI from 'db-sheep-ui'
+declare module 'db-sheep-ui' {
+  const demoblock: any
+  export default demoblock
+}

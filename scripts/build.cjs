@@ -37,8 +37,8 @@ const buildAll = async () => {
         rollupOptions,
         lib: {
           entry: entryFile,
-          name: 'd-ui',
-          fileName: 'd-ui',
+          name: 'db-sheep-ui',
+          fileName: 'db-sheep-ui',
           formats: ['es', 'umd']
         },
         outDir: outputDir

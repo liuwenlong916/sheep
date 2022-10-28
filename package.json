@@ -16,6 +16,7 @@
     "build:components": "node ./scripts/build.cjs"
   },
   "dependencies": {
+    "db-sheep-ui": "^0.0.2",
     "fs-extra": "^10.1.0",
     "vitepress": "0.22.3",
     "vue": "^3.2.37"
