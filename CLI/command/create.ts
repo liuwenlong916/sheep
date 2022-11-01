@@ -2,6 +2,7 @@ import * as inquirer from 'inquirer'
 //eslint方式
 //import inquirer from 'inquirer'
 import { red } from 'kolorist'
+import { createComponent } from '../shared/create-component'
 
 // create type 支持项
 const CREATE_TYPES = ['component', 'lib-entry']
@@ -75,8 +76,4 @@ export default async function onCreate(args = { type: '' }) {
     console.log(red('X') + e.toString())
     process.exit(1)
   }
-}
-
-function createComponent(info) {
-  console.log(info)
 }
