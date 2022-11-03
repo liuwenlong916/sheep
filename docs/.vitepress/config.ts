@@ -8,7 +8,10 @@ const sidebar = {
     { text: '导航' },
     { text: '反馈' },
     { text: '数据录入' },
-    { text: '数据展示' },
+    {
+      text: '数据展示',
+      children: [{ text: 'tree组件', link: '/components/tree/' }]
+    },
     { text: '布局' }
   ]
 }
