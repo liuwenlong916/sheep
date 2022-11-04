@@ -18,7 +18,7 @@ export function generateInnerTree(
         level,
         curr.id
       ) as IInnerTreeNode[]
-      //TODO:
+      //TODO: children 必须是可选参数，才可以被删除
       delete o.children
       return prev.concat(o, children)
     } else {

@@ -4,7 +4,7 @@
 
 ```vue
 <template>
-  <Button></Button>
+  <DButton></DButton>
 </template>
 ```
 

@@ -1,17 +1,48 @@
-import { defineComponent, toRefs, ref } from 'vue'
+import { defineComponent, toRefs } from 'vue'
+import useTree from './composables/use-tree'
 import { TreeProps, treeProps } from './tree-type'
-import { generateInnerTree } from './utils'
 export default defineComponent({
   name: 'DTree',
   props: treeProps,
   setup(props: TreeProps) {
     const { data } = toRefs(props)
-    const innerData = ref(generateInnerTree(data.value))
-    console.log(data, innerData)
+    const { expandTree, toggleNode } = useTree(data)
+
     return () => {
       return (
         <div class="s-tree">
-          {innerData.value.map(treeNode => treeNode.label + '->')}
+          {expandTree.value.map(treeNode => (
+            <div
+              class="s-tree-node"
+              style={{
+                paddingLeft: `${24 * (treeNode.level - 1)}px`
+              }}
+            >
+              {treeNode.isLeaf ? (
+                <span style="width:25px; display:inline-block"></span>
+              ) : (
+                <svg
+                  onClick={() => {
+                    toggleNode(treeNode)
+                  }}
+                  style={{
+                    width: '25px',
+                    height: '16px',
+                    display: 'inline-block',
+                    transform: treeNode.expanded ? 'rotate(90deg)' : ''
+                  }}
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M384 192v640l384-320.064z"
+                  ></path>
+                </svg>
+              )}
+              {treeNode.label}
+            </div>
+          ))}
         </div>
       )
     }
