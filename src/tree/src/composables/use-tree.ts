@@ -9,6 +9,7 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     const cur = innerData.value.find(item => item.id === node.id)
     cur && (cur.expanded = !cur.expanded)
   }
+  //获去所有 显示的节点
   const expandTree = computed(() => {
     const result: IInnerTreeNode[] = []
     let excludeNodes: IInnerTreeNode[] = []
@@ -37,9 +38,40 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     }
     return result
   }
+
+  const toggleCheckNode = (node: IInnerTreeNode) => {
+    node.checked = !node.checked
+    // if (node.isLeaf) {
+    checkedParent(node)
+    // } else {
+    checkedChildren(node)
+    // }
+  }
+
+  const checkedParent = (childNode: IInnerTreeNode) => {
+    if (!childNode.parentId) return
+    const parentNode: IInnerTreeNode | undefined = expandTree.value.find(
+      item => item.id == childNode.parentId
+    )
+    if (parentNode) {
+      const children: IInnerTreeNode[] = getChildren(parentNode)
+      const checkedSiblingNodes = children.filter(item => item.checked)
+      parentNode.checked = checkedSiblingNodes.length === children.length
+      checkedParent(parentNode)
+    }
+  }
+  const checkedChildren = (parentNode: IInnerTreeNode) => {
+    const children: IInnerTreeNode[] = getChildren(parentNode)
+    children.forEach(child => {
+      child.checked = parentNode.checked
+    })
+  }
+
   return {
     expandTree,
     innerData,
-    toggleNode
+    toggleNode,
+    getChildren,
+    toggleCheckNode
   }
 }

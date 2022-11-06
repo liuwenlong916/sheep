@@ -61,3 +61,68 @@ const data = [
 ```
 
 :::
+
+# DTree 组件选中
+
+:::demo 选中
+
+```vue
+<template>
+  <DTree :data="data" checkable></DTree>
+</template>
+<script setup>
+const data = [
+  {
+    label: 'docs',
+    id: 'docs',
+    checked: true
+  },
+  {
+    label: 'packages',
+    id: 'packages',
+    expanded: true,
+    children: [
+      {
+        label: 'plugin-vue',
+        id: 'plugin-vue'
+      },
+      {
+        label: 'vite',
+        id: 'vite',
+        expanded: true,
+        children: [
+          {
+            label: 'src',
+            id: 'src'
+          },
+          {
+            label: 'README.md',
+            id: 'README.md'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'scripts',
+    id: 'scripts',
+    children: [
+      {
+        label: 'release.ts',
+        id: 'release.ts'
+      },
+      {
+        label: 'verifyCommit.ts',
+        id: 'verifyCommit.ts'
+      }
+    ]
+  },
+  {
+    label: 'pnpm-workspace.yaml',
+    id: 'pnpm-workspace.yaml'
+  }
+]
+</script>
+```
+
+:::

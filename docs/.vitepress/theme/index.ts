@@ -3,6 +3,8 @@
 import Theme from 'vitepress/theme'
 import { DButton } from '../../../src/button/index'
 import { DTree } from '../../../src/tree/index'
+// import './demo-block.scss'
+import '../../../src/index.scss'
 // 主题样式
 import 'vitepress-theme-demoblock/theme/styles/index.css'
 // 插件的组件，主要是demo组件
