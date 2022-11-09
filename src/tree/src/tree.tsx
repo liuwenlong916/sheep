@@ -41,7 +41,7 @@ export default defineComponent({
               {treeNode.isLeaf ? (
                 <span style="width:25px; display:inline-block"></span>
               ) : slots.expendIcon ? (
-                slots.expendIcon(toggleNode, treeNode)
+                slots.expendIcon({ toggleNode, treeNode })
               ) : (
                 <svg
                   onClick={() => {
@@ -82,7 +82,7 @@ export default defineComponent({
                   />
                 </span>
               )}
-              {treeNode.label}
+              {slots.content ? slots.content(treeNode) : treeNode.label}
             </div>
           ))}
         </div>
