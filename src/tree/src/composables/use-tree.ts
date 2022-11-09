@@ -7,7 +7,7 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
 
   const toggleNode = (node: IInnerTreeNode) => {
     const cur = innerData.value.find(item => item.id === node.id)
-    cur && (cur.expanded = !cur.expanded)
+    cur && (cur.expended = !cur.expended)
   }
   //获去所有 显示的节点
   const expandTree = computed(() => {
@@ -17,7 +17,7 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
       if (excludeNodes.map(item => item.id).includes(node.id)) {
         continue
       }
-      if (!node.expanded) {
+      if (!node.expended) {
         excludeNodes = getChildren(node)
       }
 
@@ -39,6 +39,22 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     return result
   }
 
+  // const getShowChildren = (parent: IInnerTreeNode) => {
+  //   const result: IInnerTreeNode[] = []
+  //   let index = innerData.value.findIndex(item => (item.id = parent.id)) + 1
+  //   while (
+  //     index < innerData.value.length &&
+  //     innerData.value[index].level > parent.level
+  //   ) {
+  //     if (!innerData.value[index].expended) {
+
+  //     } else {
+  //       result.push(innerData.value[index])
+  //     }
+  //     index++
+  //   }
+  //   return result
+  // }
   const toggleCheckNode = (node: IInnerTreeNode) => {
     node.checked = !node.checked
     // if (node.isLeaf) {

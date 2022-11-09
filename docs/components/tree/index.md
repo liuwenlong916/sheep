@@ -15,7 +15,7 @@ const data = [
   {
     label: 'packages',
     id: 'packages',
-    expanded: true,
+    expended: true,
     children: [
       {
         label: 'plugin-vue',
@@ -24,7 +24,7 @@ const data = [
       {
         label: 'vite',
         id: 'vite',
-        expanded: true,
+        expended: true,
         children: [
           {
             label: 'src',
@@ -82,7 +82,7 @@ const data = [
   {
     label: 'packages',
     id: 'packages',
-    expanded: true,
+    expended: true,
     children: [
       {
         label: 'plugin-vue',
@@ -91,7 +91,7 @@ const data = [
       {
         label: 'vite',
         id: 'vite',
-        expanded: true,
+        expended: true,
         children: [
           {
             label: 'src',
@@ -149,7 +149,7 @@ const data = [
       >
         <svg
           :style="{
-            transform: treeNode.expanded ? 'rotate(90deg)' : '',
+            transform: treeNode.expended ? 'rotate(90deg)' : '',
             display: 'inline-block',
             margin: '0 5px',
             cursor: 'pointer'
@@ -221,7 +221,7 @@ const data = [
   {
     label: 'packages',
     id: 'packages',
-    expanded: true,
+    expended: true,
     children: [
       {
         label: 'plugin-vue',
@@ -230,7 +230,7 @@ const data = [
       {
         label: 'vite',
         id: 'vite',
-        expanded: true,
+        expended: true,
         children: [
           {
             label: 'src',
