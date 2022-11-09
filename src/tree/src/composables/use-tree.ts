@@ -57,6 +57,8 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
       const children: IInnerTreeNode[] = getChildren(parentNode)
       const checkedSiblingNodes = children.filter(item => item.checked)
       parentNode.checked = checkedSiblingNodes.length === children.length
+      parentNode.inChecked =
+        checkedSiblingNodes.length > 0 && !parentNode.checked
       checkedParent(parentNode)
     }
   }

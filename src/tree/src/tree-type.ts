@@ -20,6 +20,7 @@ export interface ITreeNode {
 
   selected?: boolean
   checked?: boolean
+  inChecked?: boolean
   expanded?: boolean
 
   disableSelect?: boolean

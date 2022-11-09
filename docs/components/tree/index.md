@@ -68,9 +68,11 @@ const data = [
 
 ```vue
 <template>
-  <DTree :data="data" checkable></DTree>
+  <DTree :data="data" checkable ref="tree"></DTree>
 </template>
 <script setup>
+import { ref, onMounted } from 'vue'
+const tree = ref() //标签加载完成后才会有值
 const data = [
   {
     label: 'docs',
