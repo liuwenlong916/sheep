@@ -8,9 +8,21 @@ export default defineComponent({
   props: treeProps,
   setup(props: TreeProps, { slots, expose }) {
     const { data } = toRefs(props)
-    const { expandTree, toggleNode, getChildren, toggleCheckNode } =
-      useTree(data)
-    provide('TREE_UTILS', { toggleNode, getChildren, toggleCheckNode })
+    const {
+      expandTree,
+      toggleNode,
+      getChildren,
+      toggleCheckNode,
+      append,
+      remove
+    } = useTree(data)
+    provide('TREE_UTILS', {
+      toggleNode,
+      getChildren,
+      toggleCheckNode,
+      append,
+      remove
+    })
     return () => {
       return (
         <div class="s-tree">

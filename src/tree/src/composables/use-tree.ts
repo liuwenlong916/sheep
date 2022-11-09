@@ -85,11 +85,19 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     })
   }
 
+  const append = () => {
+    console.log('a')
+  }
+  const remove = () => {
+    console.log('a')
+  }
   return {
     expandTree,
     innerData,
     toggleNode,
     getChildren,
-    toggleCheckNode
+    toggleCheckNode,
+    append,
+    remove
   }
 }

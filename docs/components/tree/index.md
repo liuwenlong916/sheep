@@ -267,3 +267,70 @@ const data = [
 ```
 
 :::
+
+# DTree 操作组件
+
+:::demo
+
+```vue
+<template>
+  <DTree :data="data" operable ref="tree"></DTree>
+</template>
+<script setup>
+import { ref, onMounted } from 'vue'
+const tree = ref() //标签加载完成后才会有值
+const data = [
+  {
+    label: 'docs',
+    id: 'docs',
+    checked: true
+  },
+  {
+    label: 'packages',
+    id: 'packages',
+    expended: true,
+    children: [
+      {
+        label: 'plugin-vue',
+        id: 'plugin-vue'
+      },
+      {
+        label: 'vite',
+        id: 'vite',
+        expended: true,
+        children: [
+          {
+            label: 'src',
+            id: 'src'
+          },
+          {
+            label: 'README.md',
+            id: 'README.md'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'scripts',
+    id: 'scripts',
+    children: [
+      {
+        label: 'release.ts',
+        id: 'release.ts'
+      },
+      {
+        label: 'verifyCommit.ts',
+        id: 'verifyCommit.ts'
+      }
+    ]
+  },
+  {
+    label: 'pnpm-workspace.yaml',
+    id: 'pnpm-workspace.yaml'
+  }
+]
+</script>
+```
+
+:::
