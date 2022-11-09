@@ -26,35 +26,41 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     return result
   })
 
-  const getChildren = (parent: IInnerTreeNode) => {
+  const getChildren = (parent: IInnerTreeNode, recursive = true) => {
     const result: IInnerTreeNode[] = []
     let index = innerData.value.findIndex(item => item.id == parent.id) + 1
-    while (
-      index < innerData.value.length &&
-      innerData.value[index].level > parent.level
-    ) {
-      result.push(innerData.value[index])
-      index++
+    if (recursive) {
+      while (
+        index < innerData.value.length &&
+        innerData.value[index].level > parent.level
+      ) {
+        result.push(innerData.value[index])
+        index++
+      }
+    } else {
+      while (
+        index < innerData.value.length &&
+        innerData.value[index].level == parent.level + 1
+      ) {
+        result.push(innerData.value[index])
+        index++
+      }
     }
+
     return result
   }
 
-  // const getShowChildren = (parent: IInnerTreeNode) => {
-  //   const result: IInnerTreeNode[] = []
-  //   let index = innerData.value.findIndex(item => (item.id = parent.id)) + 1
-  //   while (
-  //     index < innerData.value.length &&
-  //     innerData.value[index].level > parent.level
-  //   ) {
-  //     if (!innerData.value[index].expended) {
-
-  //     } else {
-  //       result.push(innerData.value[index])
-  //     }
-  //     index++
-  //   }
-  //   return result
-  // }
+  const getExpandedChildren = (
+    parent: IInnerTreeNode,
+    result: IInnerTreeNode[] = []
+  ) => {
+    const childrenNode = getChildren(parent, false)
+    result.push(...childrenNode)
+    childrenNode.forEach(child => {
+      child.expended && getExpandedChildren(child, result)
+    })
+    return result
+  }
   const toggleCheckNode = (node: IInnerTreeNode) => {
     node.checked = !node.checked
     // if (node.isLeaf) {
@@ -85,17 +91,51 @@ export default function useTree(tree: ITreeNode[] | Ref<ITreeNode[]>) {
     })
   }
 
-  const append = () => {
-    console.log('a')
+  const append = (parentNode: IInnerTreeNode, label: string) => {
+    const childrenNode = getChildren(parentNode) //始终返回数组
+    const latestNode = childrenNode[childrenNode.length - 1]
+    let insertIndex = 0
+    if (latestNode) {
+      insertIndex = innerData.value.findIndex(item => item.id == latestNode.id)
+    } else {
+      insertIndex = innerData.value.findIndex(item => item.id == parentNode.id)
+    }
+
+    parentNode.expended = true
+    parentNode.isLeaf = false
+
+    const insertNode = ref({
+      label,
+      level: parentNode.level + 1,
+      parentId: parentNode.id,
+      isLeaf: true
+    })
+
+    console.log(insertIndex + 1, parentNode, label, insertNode.value)
+    innerData.value.splice(insertIndex + 1, 0, insertNode.value)
   }
-  const remove = () => {
-    console.log('a')
+  const remove = (node: IInnerTreeNode) => {
+    const childrenNode = getChildren(node)
+    innerData.value = innerData.value.filter(
+      item => item.id !== node.id && !childrenNode.includes(item)
+    )
+
+    //父节点无孩子转叶子节点
+    const parentNode = innerData.value.find(item => (item.id = node.parentId))
+    if (parentNode) {
+      const childrenNode2 = getChildren(parentNode)
+      if (childrenNode2.length === 0) {
+        parentNode.expended = false
+        parentNode.isLeaf = true
+      }
+    }
   }
   return {
     expandTree,
     innerData,
     toggleNode,
     getChildren,
+    getExpandedChildren,
     toggleCheckNode,
     append,
     remove

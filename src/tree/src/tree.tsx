@@ -12,6 +12,7 @@ export default defineComponent({
       expandTree,
       toggleNode,
       getChildren,
+      getExpandedChildren,
       toggleCheckNode,
       append,
       remove
@@ -19,6 +20,7 @@ export default defineComponent({
     provide('TREE_UTILS', {
       toggleNode,
       getChildren,
+      getExpandedChildren,
       toggleCheckNode,
       append,
       remove

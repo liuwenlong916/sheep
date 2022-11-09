@@ -21,12 +21,12 @@ export default defineComponent({
       const { treeNode, checkable, operable } = toRefs(props)
       type TreeUtils = {
         toggleNode: (treeNode: IInnerTreeNode) => void
-        getChildren: (treeNode: IInnerTreeNode) => IInnerTreeNode[]
+        getExpandedChildren: (treeNode: IInnerTreeNode) => IInnerTreeNode[]
         toggleCheckNode: (treeNode: IInnerTreeNode) => void
-        append: (treeNode: IInnerTreeNode, node: { label: string }) => Boolean
+        append: (treeNode: IInnerTreeNode, label: string) => Boolean
         remove: (treeNode: IInnerTreeNode) => Boolean
       }
-      const { getChildren, toggleCheckNode, append, remove } = inject(
+      const { toggleCheckNode, getExpandedChildren, append, remove } = inject(
         'TREE_UTILS'
       ) as TreeUtils
 
@@ -47,7 +47,9 @@ export default defineComponent({
               class="s-tree-node__vline absolute w-px bg-slate-300"
               style={{
                 width: '1px',
-                height: `${NODE_HEIGHT * getChildren(treeNode.value).length}px`,
+                height: `${
+                  NODE_HEIGHT * getExpandedChildren(treeNode.value).length
+                }px`,
                 left: `${NODE_INDENT * (treeNode.value.level - 1) + 12}px`,
                 top: `${NODE_HEIGHT}px`
               }}
@@ -85,7 +87,7 @@ export default defineComponent({
             <span class="inline-flex ml-1">
               <svg
                 onClick={() => {
-                  append(treeNode.value, { label: '新节点' })
+                  append(treeNode.value, '新节点')
                 }}
                 viewBox="0 0 1024 1024"
                 width="14"
