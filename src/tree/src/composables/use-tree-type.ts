@@ -8,7 +8,7 @@ export type IUseCore = {
     treeNode: IInnerTreeNode,
     recursive?: boolean
   ) => IInnerTreeNode[]
-  getNode: (id: string) => IInnerTreeNode
+  getNode: (id: string) => IInnerTreeNode | undefined
   getIndex: (id: string) => number
 }
 //展开折叠

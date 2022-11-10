@@ -1,6 +1,9 @@
 import { SetupContext } from 'vue'
 
-export default (props: { expended: boolean }, { emit }: SetupContext) => {
+export default (
+  props: { expended: boolean; onClick: () => void },
+  { emit }: SetupContext
+) => {
   return (
     <svg
       onClick={() => {
