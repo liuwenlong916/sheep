@@ -19,7 +19,7 @@ export type TreeProps = ExtractPropTypes<typeof treeProps>
 
 export interface ITreeNode {
   label: string
-  id?: string
+  id: string
   children?: ITreeNode[]
 
   selected?: boolean

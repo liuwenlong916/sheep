@@ -1,6 +1,7 @@
 import { defineComponent, inject, toRefs, ref } from 'vue'
 import { IInnerTreeNode } from '../tree-type'
 import { TreeNodeProps, treeNodeProps } from '../tree-node-type'
+import { TreeUtils } from '../composables/use-tree-type'
 
 export default defineComponent({
   name: 'DTreeNode',
@@ -19,13 +20,7 @@ export default defineComponent({
       // 节点缩进大小
       const NODE_INDENT = 24
       const { treeNode, checkable, operable } = toRefs(props)
-      type TreeUtils = {
-        toggleNode: (treeNode: IInnerTreeNode) => void
-        getExpandedChildren: (treeNode: IInnerTreeNode) => IInnerTreeNode[]
-        toggleCheckNode: (treeNode: IInnerTreeNode) => void
-        append: (treeNode: IInnerTreeNode, label: string) => Boolean
-        remove: (treeNode: IInnerTreeNode) => Boolean
-      }
+
       const { toggleCheckNode, getExpandedChildren, append, remove } = inject(
         'TREE_UTILS'
       ) as TreeUtils
