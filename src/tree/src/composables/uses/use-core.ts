@@ -56,9 +56,12 @@ export default function useCore(innerData: Ref<IInnerTreeNode[]>): IUseCore {
     })
     return result
   }
-  const getNode = (id: string) => {
-    const node = innerData.value.find(item => item.id == id)
-    return node
+  const getNode = (node: IInnerTreeNode) => {
+    if (node) {
+      return innerData.value.find(item => item.id == node.id)
+    } else {
+      return undefined
+    }
   }
 
   const getIndex = (id: string) => {

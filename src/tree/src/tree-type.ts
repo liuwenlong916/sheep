@@ -26,6 +26,9 @@ export interface ITreeNode {
   checked?: boolean
   inChecked?: boolean
   expended?: boolean
+  loading?: boolean
+  childrenCount?: number
+  lazyLoad?: boolean
 
   disableSelect?: boolean
   disableCheck?: boolean

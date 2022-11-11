@@ -104,6 +104,7 @@ export default defineComponent({
               </svg>
             </span>
           )}
+          {treeNode.value.loading && slots.loading?.()}
         </div>
       )
     }

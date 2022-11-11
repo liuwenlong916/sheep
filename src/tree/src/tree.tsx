@@ -1,4 +1,4 @@
-import { defineComponent, toRefs, provide } from 'vue'
+import { defineComponent, toRefs, provide, SetupContext } from 'vue'
 import useTree from './composables/use-tree'
 import { TreeProps, treeProps } from './tree-type'
 import DTreeNode from './components/tree-node'
@@ -6,8 +6,9 @@ import DTreeNodeToggle from './components/tree-node-toggle'
 export default defineComponent({
   name: 'DTree',
   props: treeProps,
-  setup(props: TreeProps, { slots, expose }) {
+  setup(props: TreeProps, content: SetupContext) {
     const { data } = toRefs(props)
+    const { slots, expose } = content
     const {
       expandTree,
       toggleNode,
@@ -16,7 +17,7 @@ export default defineComponent({
       toggleCheckNode,
       append,
       remove
-    } = useTree(data)
+    } = useTree(data, content)
     provide('TREE_UTILS', {
       toggleNode,
       getChildren,
@@ -44,6 +45,12 @@ export default defineComponent({
                       expended={!!treeNode.expended}
                       onClick={() => toggleNode(treeNode)}
                     ></DTreeNodeToggle>
+                  ),
+                loading: () =>
+                  slots.loading ? (
+                    slots.loading({ nodeData: treeNode })
+                  ) : (
+                    <span class="ml-1">loading...</span>
                   )
               }}
             </DTreeNode>

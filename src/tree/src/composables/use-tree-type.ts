@@ -1,5 +1,5 @@
 import { ComputedRef, Ref } from 'vue'
-import { IInnerTreeNode } from '../tree-type'
+import { IInnerTreeNode, ITreeNode } from '../tree-type'
 
 export type IUseCore = {
   expandTree: ComputedRef<IInnerTreeNode[]>
@@ -8,7 +8,7 @@ export type IUseCore = {
     treeNode: IInnerTreeNode,
     recursive?: boolean
   ) => IInnerTreeNode[]
-  getNode: (id: string) => IInnerTreeNode | undefined
+  getNode: (node: IInnerTreeNode) => IInnerTreeNode | undefined
   getIndex: (id: string) => number
 }
 //展开折叠
@@ -26,6 +26,13 @@ export type IUseOperate = {
   remove: (treeNode: IInnerTreeNode) => void
 }
 
+export type IUseLazyLoad = {
+  loadLazyNodes: (node: IInnerTreeNode) => void //派发事件
+}
+export type LazyNodeResult = {
+  treeItems: ITreeNode[]
+  node: IInnerTreeNode
+}
 export type TreeUtils = { innerData: Ref<IInnerTreeNode[]> } & IUseCore &
   IUseToggle &
   IUseCheck &

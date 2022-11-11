@@ -334,3 +334,81 @@ const data = [
 ```
 
 :::
+
+## 节点懒加载
+
+:::demo 通过设置该节点 isLeaf 参数为 false, 组件回调 lazyLoad 方法实现节点懒加载。 :::demo 通过设置该节点 isLeaf 参数为 false, 组件回调 lazyLoad 方法实现节点懒加载。
+
+```vue
+<template>
+  <d-tree :data="data" @lazy-load="lazyLoadFn"></d-tree>
+</template>
+<script>
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  setup() {
+    const data = ref([
+      {
+        id: 'node-1',
+        label: 'node-1',
+        children: [
+          {
+            id: 'node-1-1',
+            label: 'node 1-1 - dynamic loading',
+            isLeaf: false,
+            lazyLoad: true
+          },
+          {
+            id: 'node 1-2',
+            label: 'node 1-2'
+          }
+        ]
+      },
+      {
+        id: 'node-2',
+        label: 'node 2 - dynamic loading',
+        isLeaf: false,
+        lazyLoad: true
+      }
+    ])
+
+    const lazyLoadFn = (node, callback) => {
+      setTimeout(() => {
+        const data = [
+          {
+            label: 'lazy node 1',
+            expanded: true,
+            children: [
+              {
+                id: 'lazy node 1-1',
+                label: 'lazy node 1-1'
+              },
+              {
+                id: 'lazy node 1-2',
+                label: 'lazy node 1-2'
+              }
+            ]
+          },
+          {
+            id: 'lazy node 2',
+            label: 'lazy node 2'
+          }
+        ]
+        callback({
+          treeItems: data,
+          node
+        })
+      }, 1000)
+    }
+
+    return {
+      data,
+      lazyLoadFn
+    }
+  }
+})
+</script>
+```
+
+:::
