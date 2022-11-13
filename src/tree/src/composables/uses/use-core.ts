@@ -4,6 +4,7 @@ import { IUseCore } from '../use-tree-type'
 
 export default function useCore(innerData: Ref<IInnerTreeNode[]>): IUseCore {
   //获去所有 显示的节点
+  //响应式数据,监听innerData
   const expandTree = computed(() => {
     const result: IInnerTreeNode[] = []
     let excludeNodes: IInnerTreeNode[] = []
