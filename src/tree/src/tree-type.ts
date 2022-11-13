@@ -1,4 +1,5 @@
 import { PropType, ExtractPropTypes } from 'vue'
+import { IDragdrop } from './composables/use-tree-type'
 
 export const treeProps = {
   data: {
@@ -11,6 +12,10 @@ export const treeProps = {
   },
   operable: {
     type: Boolean,
+    default: false
+  },
+  dragdrop: {
+    type: [Boolean, Object] as PropType<IDragdrop>,
     default: false
   }
 } as const

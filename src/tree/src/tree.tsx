@@ -9,27 +9,33 @@ export default defineComponent({
   setup(props: TreeProps, content: SetupContext) {
     const { data } = toRefs(props)
     const { slots, expose } = content
-    const {
-      expandTree,
-      toggleNode,
-      getChildren,
-      getExpandedChildren,
-      toggleCheckNode,
-      append,
-      remove
-    } = useTree(data, content)
-    provide('TREE_UTILS', {
-      toggleNode,
-      getChildren,
-      getExpandedChildren,
-      toggleCheckNode,
-      append,
-      remove
-    })
+    // const {
+    //   expandTree,
+    //   toggleNode,
+    //   getChildren,
+    //   getExpandedChildren,
+    //   toggleCheckNode,
+    //   append,
+    //   remove,
+    //   onDragstart,
+    //   onDrop
+    // } = useTree(data, props, content)
+    // provide('TREE_UTILS', {
+    //   toggleNode,
+    //   getChildren,
+    //   getExpandedChildren,
+    //   toggleCheckNode,
+    //   append,
+    //   remove,
+    //   onDragstart,
+    //   onDrop
+    // })
+    const usePlugins = useTree(data, props, content)
+    provide('TREE_UTILS', usePlugins)
     return () => {
       return (
         <div class="s-tree">
-          {expandTree.value.map(treeNode => (
+          {usePlugins.expandTree.value.map(treeNode => (
             <DTreeNode {...props} treeNode={treeNode}>
               {{
                 content: () => {
@@ -39,11 +45,14 @@ export default defineComponent({
                 },
                 expendIcon: () =>
                   slots.expendIcon ? (
-                    slots.expendIcon({ toggleNode, treeNode })
+                    slots.expendIcon({
+                      toggleNode: usePlugins.toggleNode,
+                      treeNode
+                    })
                   ) : (
                     <DTreeNodeToggle
                       expended={!!treeNode.expended}
-                      onClick={() => toggleNode(treeNode)}
+                      onClick={() => usePlugins.toggleNode(treeNode)}
                     ></DTreeNodeToggle>
                   ),
                 loading: () =>

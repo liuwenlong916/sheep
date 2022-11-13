@@ -412,3 +412,69 @@ export default defineComponent({
 ```
 
 :::
+
+# DTree 拖拽
+
+:::demo
+
+```vue
+<template>
+  <d-tree :data="data" dragdrop></d-tree>
+</template>
+<script setup>
+import { ref, onMounted } from 'vue'
+const data = [
+  {
+    label: 'docs',
+    id: 'docs',
+    checked: true
+  },
+  {
+    label: 'packages',
+    id: 'packages',
+    expended: true,
+    children: [
+      {
+        label: 'plugin-vue',
+        id: 'plugin-vue'
+      },
+      {
+        label: 'vite',
+        id: 'vite',
+        expended: true,
+        children: [
+          {
+            label: 'src',
+            id: 'src'
+          },
+          {
+            label: 'README.md',
+            id: 'README.md'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'scripts',
+    id: 'scripts',
+    children: [
+      {
+        label: 'release.ts',
+        id: 'release.ts'
+      },
+      {
+        label: 'verifyCommit.ts',
+        id: 'verifyCommit.ts'
+      }
+    ]
+  },
+  {
+    label: 'pnpm-workspace.yaml',
+    id: 'pnpm-workspace.yaml'
+  }
+]
+</script>
+```
+
+:::

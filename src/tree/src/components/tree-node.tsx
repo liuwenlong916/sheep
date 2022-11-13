@@ -21,10 +21,25 @@ export default defineComponent({
       const NODE_INDENT = 24
       const { treeNode, checkable, operable } = toRefs(props)
 
-      const { toggleCheckNode, getExpandedChildren, append, remove } = inject(
-        'TREE_UTILS'
-      ) as TreeUtils
+      const {
+        toggleCheckNode,
+        getExpandedChildren,
+        append,
+        remove,
+        onDragstart,
+        onDragend,
+        onDrop
+      } = inject('TREE_UTILS') as TreeUtils
 
+      const dragdrop = {
+        draggable: true,
+        onDragstart: (event: DragEvent) => onDragstart(event, treeNode.value),
+        onDrop: (event: DragEvent) => onDrop(event, treeNode.value),
+        onDragend: (event: DragEvent) => {
+          console.log('a', onDragend)
+          onDragend(event)
+        }
+      }
       return (
         <div
           class="s-tree-node hover:bg-slate-300 relative "
@@ -51,7 +66,7 @@ export default defineComponent({
             ></span>
           )}
 
-          <div draggable class="s-tree__node--content">
+          <div class="s-tree__node--content" {...dragdrop}>
             {treeNode.value.isLeaf ? (
               <span style="width:25px; display:inline-block"></span>
             ) : (
