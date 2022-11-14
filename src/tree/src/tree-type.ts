@@ -43,5 +43,5 @@ export interface ITreeNode {
 export interface IInnerTreeNode extends ITreeNode {
   parentId?: string
   level: number
-  isLeaf: boolean
+  isLeaf?: boolean
 }

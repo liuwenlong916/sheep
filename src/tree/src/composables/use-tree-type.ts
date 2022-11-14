@@ -9,6 +9,7 @@ export type IUseCore = {
     recursive?: boolean
   ) => IInnerTreeNode[]
   getNode: (node: IInnerTreeNode) => IInnerTreeNode | undefined
+  getNodeById: (id: string) => IInnerTreeNode | undefined
   getIndex: (id: string) => number
 }
 //展开折叠
@@ -44,9 +45,16 @@ export interface IDropType {
 
 export type IDraggalbe = {
   onDragstart: (event: DragEvent, treeNode: IInnerTreeNode) => void
+  onDragover: (event: DragEvent) => void
   onDragend: (event: DragEvent) => void
 
   onDrop: (event: DragEvent, treeNode: IInnerTreeNode) => void
+}
+
+export interface DragState {
+  dropType?: keyof Required<IDropType>
+  draggingNode?: HTMLElement | null
+  draggingTreeNode?: IInnerTreeNode | null
 }
 
 export type TreeUtils = { innerData: Ref<IInnerTreeNode[]> } & IUseCore &

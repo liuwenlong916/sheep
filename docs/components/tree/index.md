@@ -478,3 +478,22 @@ const data = [
 ```
 
 :::
+
+# DTree 拖拽
+
+:::demo
+
+```vue
+<template>
+  <div draggable="true">测试拖拽</div>
+  <div
+    style="width:50px;height:50px; background:red"
+    onDrop="console.log('drop')"
+  ></div>
+</template>
+<script setup>
+const data = '测试'
+</script>
+```
+
+:::

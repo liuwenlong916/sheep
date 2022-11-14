@@ -27,6 +27,7 @@ export default defineComponent({
         append,
         remove,
         onDragstart,
+        onDragover,
         onDragend,
         onDrop
       } = inject('TREE_UTILS') as TreeUtils
@@ -35,10 +36,8 @@ export default defineComponent({
         draggable: true,
         onDragstart: (event: DragEvent) => onDragstart(event, treeNode.value),
         onDrop: (event: DragEvent) => onDrop(event, treeNode.value),
-        onDragend: (event: DragEvent) => {
-          console.log('a', onDragend)
-          onDragend(event)
-        }
+        onDragover: (event: DragEvent) => onDragover(event),
+        onDragend: (event: DragEvent) => onDragend(event)
       }
       return (
         <div
