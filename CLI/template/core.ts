@@ -14,7 +14,7 @@ export default defineComponent({
   props: ${propsName},
   setup(props: ${propsTypeName}) {
     return () => {
-      return <div class="${className}"></div>
+      return <div class="${className}">${compName}</div>
     }
   }
 })

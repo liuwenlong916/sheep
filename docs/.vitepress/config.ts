@@ -5,7 +5,10 @@ const sidebar = {
       text: '通用',
       children: [{ text: 'Button 按钮', link: '/components/button/' }]
     },
-    { text: '导航' },
+    {
+      text: '导航',
+      children: [{ text: '分页组件', link: '/components/pagination/' }]
+    },
     { text: '反馈' },
     { text: '数据录入' },
     {
