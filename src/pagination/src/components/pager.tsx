@@ -23,7 +23,7 @@ export default defineComponent({
       getCenterPage(totalPage.value, currIndex.value, pagerSize.value)
     )
     //向外暴露
-    expose({ prevPage, nextPage, setPageIndex, currIndex })
+    expose({ prevPage, nextPage, setPageIndex, currIndex, totalPage })
 
     onMounted(() => {
       watch(

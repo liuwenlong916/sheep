@@ -13,5 +13,10 @@
   }
   li.current {
     color: rgb(96, 96, 255);
+    cursor: default;
   }
+}
+
+.notAllow {
+  cursor: not-allowed !important;
 }
