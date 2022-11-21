@@ -5,10 +5,13 @@
 
 import type { App } from 'vue'
 import ButtonPlugin, { DButton } from '../src/button'
+import TreePlugin, { DTree } from '../src/tree'
+import FormPlugin, { DForm, DFormItem } from '../src/form'
+import PaginationPlugin, { DPagination, DPager } from '../src/pagination'
 
-export { DButton }
+export { DButton, DTree, DForm, DPagination, DPager, DFormItem }
 
-const installs = [ButtonPlugin]
+const installs = [ButtonPlugin, TreePlugin, PaginationPlugin, FormPlugin]
 export default {
   install(app: App) {
     installs.forEach(p => app.use(p))

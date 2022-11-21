@@ -16,10 +16,12 @@ LButton: typeof import('./button/index')['Button']
  */
 
 import { DButton } from './button/index'
+import { DForm } from './form/index'
 
 declare module 'vue' {
   export interface GlobalComponents {
     DButton: typeof DButton
+    DForm: typeof DForm
     // RouterLink: typeof import('vue-router')['RouterLink']
     // RouterView: typeof import('vue-router')['RouterView']
   }

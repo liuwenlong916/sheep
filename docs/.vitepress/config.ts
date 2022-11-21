@@ -10,7 +10,10 @@ const sidebar = {
       children: [{ text: '分页组件', link: '/components/pagination/' }]
     },
     { text: '反馈' },
-    { text: '数据录入' },
+    {
+      text: '数据录入',
+      children: [{ text: 'form表单', link: '/components/form/' }]
+    },
     {
       text: '数据展示',
       children: [{ text: 'tree组件', link: '/components/tree/' }]

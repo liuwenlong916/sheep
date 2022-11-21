@@ -6,12 +6,12 @@ const createPackageJson = (outputDir, name) => {
   // 根据传入name决定包名、主文件和主模块名称
   const fileStr = `{
     "name": "${name ? name : 'db-sheep-ui'}",
-    "version": "0.0.0",
+    "version": "0.0.4",
     "main": "${name ? 'index.umd.cjs' : 'db-sheep-ui.umd.cjs'}",
     "module": "${name ? 'index.js' : 'db-sheep-ui.js'}",
     "author": "liuwenlong916",
     "github": "",
-    "description": "第一个组件库",
+    "description": "vue3 tsx 组件库",
     "repository": {
       "type": "git",
       "url": "git+https://github.com/liuwenlong916/sheep.git"

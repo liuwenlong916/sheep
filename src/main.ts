@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 import './index.scss'
 import Button from './button'
+import Form from './form'
 
 //使用全量导出
 // import sheepUI from '../build/d-ui.js'
@@ -12,4 +13,4 @@ import Button from './button'
 
 // import sheepUI from 'db-sheep-ui'
 
-createApp(App).use(Button).mount('#app')
+createApp(App).use(Button).use(Form).mount('#app')

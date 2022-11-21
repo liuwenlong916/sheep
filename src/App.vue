@@ -26,6 +26,7 @@ const confirm = function () {
   </D-button>
   <!-- <Button type="primary">局部引入</Button> -->
   <D-button block>取消</D-button>
+  <d-form :model="{}" layout="vertical"></d-form>
 </template>
 
 <style scoped>

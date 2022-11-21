@@ -4,6 +4,7 @@ import Theme from 'vitepress/theme'
 import { DButton } from '../../../src/button/index'
 import { DTree } from '../../../src/tree/index'
 import { DPagination, DPager } from '../../../src/pagination'
+import { DForm, DFormItem } from '../../../src/form'
 // import './demo-block.scss'
 import '../../../src/index.scss'
 // 主题样式
@@ -21,6 +22,8 @@ export default {
     app.component('DTree', DTree)
     app.component('DPagination', DPagination)
     app.component('DPager', DPager)
+    app.component('DForm', DForm)
+    app.component('DFormItem', DFormItem)
     app.component('Demo', Demo)
     app.component('DemoBlock', DemoBlock)
   }
