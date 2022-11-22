@@ -16,6 +16,7 @@
     "build:components": "node ./scripts/build.cjs"
   },
   "dependencies": {
+    "async-validator": "^4.2.5",
     "db-sheep-ui": "^0.0.3",
     "fs-extra": "^10.1.0",
     "vitepress": "0.22.3",

@@ -1,4 +1,5 @@
 import { PropType, ExtractPropTypes } from 'vue'
+import { Rules } from 'async-validator'
 
 export type Layout = 'horizontal' | 'vertical'
 export const formProps = {
@@ -9,6 +10,9 @@ export const formProps = {
   layout: {
     type: String as PropType<Layout>,
     default: 'vertical'
+  },
+  rules: {
+    type: Object as PropType<Rules>
   }
 } as const
 
