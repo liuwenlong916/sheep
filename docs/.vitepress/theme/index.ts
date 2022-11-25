@@ -3,6 +3,7 @@
 import Theme from 'vitepress/theme'
 import { DButton } from '../../../src/button/index'
 import { DTree } from '../../../src/tree/index'
+import { DInput } from '../../../src/input/index'
 import { DPagination, DPager } from '../../../src/pagination'
 import { DForm, DFormItem } from '../../../src/form'
 // import './demo-block.scss'
@@ -19,6 +20,7 @@ export default {
   // 扩展应用程序实例
   enhanceApp({ app }: { app: App<never> }) {
     app.component('DButton', DButton)
+    app.component('DInput', DInput)
     app.component('DTree', DTree)
     app.component('DPagination', DPagination)
     app.component('DPager', DPager)

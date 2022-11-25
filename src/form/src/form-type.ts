@@ -1,5 +1,6 @@
-import { PropType, ExtractPropTypes } from 'vue'
+import { PropType, ExtractPropTypes, InjectionKey } from 'vue'
 import { Rules } from 'async-validator'
+import { ItemContext } from './form-item-type'
 
 export type Layout = 'horizontal' | 'vertical'
 export const formProps = {
@@ -17,3 +18,13 @@ export const formProps = {
 } as const
 
 export type FormProps = ExtractPropTypes<typeof formProps>
+
+export type FormContext = {
+  model: any
+  rules?: Rules
+  addItem: (item: ItemContext) => void
+  removeItem: (item: ItemContext) => void
+}
+
+export const formContextToken: InjectionKey<FormContext> =
+  Symbol('formContextToken')
