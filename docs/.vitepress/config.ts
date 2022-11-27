@@ -9,7 +9,10 @@ const sidebar = {
       text: '导航',
       children: [{ text: '分页组件', link: '/components/pagination/' }]
     },
-    { text: '反馈' },
+    {
+      text: '反馈',
+      children: [{ text: 'dialog', link: '/components/dialog/' }]
+    },
     {
       text: '数据录入',
       children: [{ text: 'form表单', link: '/components/form/' }]

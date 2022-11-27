@@ -6,6 +6,8 @@ import { DTree } from '../../../src/tree/index'
 import { DInput } from '../../../src/input/index'
 import { DPagination, DPager } from '../../../src/pagination'
 import { DForm, DFormItem } from '../../../src/form'
+import { DModal } from '../../../src/modal'
+import { DDialog } from '../../../src/dialog'
 // import './demo-block.scss'
 import '../../../src/index.scss'
 // 主题样式
@@ -14,6 +16,7 @@ import 'vitepress-theme-demoblock/theme/styles/index.css'
 import Demo from 'vitepress-theme-demoblock/components/Demo.vue'
 import DemoBlock from 'vitepress-theme-demoblock/components/DemoBlock.vue'
 import type { App } from 'vue'
+import { ap } from 'vitest/dist/global-732f9b14'
 
 export default {
   ...Theme,
@@ -28,5 +31,7 @@ export default {
     app.component('DFormItem', DFormItem)
     app.component('Demo', Demo)
     app.component('DemoBlock', DemoBlock)
+    app.component('DModal', DModal)
+    app.component('DDialog', DDialog)
   }
 }

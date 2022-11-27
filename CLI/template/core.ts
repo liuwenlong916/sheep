@@ -9,6 +9,7 @@ export function genCoreTemplate(name) {
   return `\
 import { defineComponent, toRefs } from 'vue'
 import { ${propsTypeName}, ${propsName} } from '${propsFileName}'
+import '../style/${name}.scss'
 export default defineComponent({
   name: '${compName}',
   props: ${propsName},
