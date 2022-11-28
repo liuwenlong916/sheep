@@ -1,4 +1,4 @@
-import { defineComponent, toRef, toRefs } from 'vue'
+import { defineComponent, toRefs } from 'vue'
 import { ModalProps, modalProps } from './modal-type'
 import '../style/modal.scss'
 export default defineComponent({
@@ -14,7 +14,9 @@ export default defineComponent({
             <div class="s-modal">
               <div
                 class="s-modal__mask"
-                onClick={() => emit('update:modelValue', false)}
+                onClick={
+                  () => emit('update:modelValue', false) //向外派发，直到根节点结束
+                }
               ></div>
               {slots.default?.()}
             </div>

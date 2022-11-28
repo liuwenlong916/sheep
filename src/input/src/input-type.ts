@@ -8,6 +8,10 @@ export const inputProps = {
   type: {
     type: String,
     default: 'text'
+  },
+  from: {
+    type: String,
+    default: 'formItem'
   }
 } as const
 

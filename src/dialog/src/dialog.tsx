@@ -19,7 +19,6 @@ export default defineComponent({
       return (
         <DModal
           modelValue={modelValue.value}
-          // model的点击方法触发update在这里派发出去更新model
           onUpdate:modelValue={value => {
             emit('update:modelValue', value)
           }}

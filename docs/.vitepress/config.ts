@@ -15,7 +15,10 @@ const sidebar = {
     },
     {
       text: '数据录入',
-      children: [{ text: 'form表单', link: '/components/form/' }]
+      children: [
+        { text: 'form表单', link: '/components/form/' },
+        { text: 'input-number', link: '/components/input-number/' }
+      ]
     },
     {
       text: '数据展示',

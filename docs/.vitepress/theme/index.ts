@@ -8,6 +8,7 @@ import { DPagination, DPager } from '../../../src/pagination'
 import { DForm, DFormItem } from '../../../src/form'
 import { DModal } from '../../../src/modal'
 import { DDialog } from '../../../src/dialog'
+import { DInputNumber } from '../../../src/input-number'
 // import './demo-block.scss'
 import '../../../src/index.scss'
 // 主题样式
@@ -33,5 +34,6 @@ export default {
     app.component('DemoBlock', DemoBlock)
     app.component('DModal', DModal)
     app.component('DDialog', DDialog)
+    app.component('DInputNumber', DInputNumber)
   }
 }
