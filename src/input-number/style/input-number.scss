@@ -1,4 +1,10 @@
 .s-input-number {
   /* your component style */
-
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+  }
+  input[number] {
+    -moz-appearance: textfield;
+  }
 }

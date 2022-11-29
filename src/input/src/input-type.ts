@@ -5,6 +5,7 @@ export const inputProps = {
     type: String,
     default: ''
   },
+  // modelValue: [String, Number],
   type: {
     type: String,
     default: 'text'
@@ -12,6 +13,14 @@ export const inputProps = {
   from: {
     type: String,
     default: 'formItem'
+  },
+  max: {
+    type: Number,
+    default: Infinity
+  },
+  min: {
+    type: Number,
+    default: -Infinity
   }
 } as const
 

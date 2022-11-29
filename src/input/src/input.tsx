@@ -1,14 +1,15 @@
 import { computed, defineComponent, inject, toRefs, watch, ref } from 'vue'
 import { ItemContext } from '../../form/src/form-item-type'
 import { InputProps, inputProps } from './input-type'
+import '../style/input.scss'
 
 export default defineComponent({
   name: 'DInput',
   props: inputProps,
   emits: ['update:modelValue', 'input', 'blur'], //对外暴露一个事件，
   setup(props: InputProps, { emit, expose }) {
-    const { modelValue, from } = toRefs(props)
-    const val = ref(modelValue.value)
+    const { modelValue } = toRefs(props)
+    const input = ref()
     const onInput = (event: Event) => {
       const val = (event.target as HTMLInputElement).value
       if (props.from === 'formItem') {
@@ -21,18 +22,15 @@ export default defineComponent({
     const onBlur = (e: Event) => {
       console.log('blur', e)
     }
-    const updateValue = (value: string) => {
-      //TODO: 临时解决输入非数字时， 触发更新事件
-      val.value = ''
-      val.value = value
-    }
-
-    expose({ updateValue })
+    expose({ input })
     return () => {
       return (
-        <div>
+        <div class="s-input">
           <input
-            value={val.value}
+            style="appearance: none;"
+            ref={input}
+            value={modelValue.value}
+            {...props}
             onInput={onInput}
             type={props.type}
             onBlur={onBlur}

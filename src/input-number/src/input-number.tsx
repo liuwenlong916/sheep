@@ -21,31 +21,42 @@ export default defineComponent({
       if (newVal < min.value) return min.value
       return newVal
     }
-    const onInput = (value: string) => {
-      currentValue.value = setCurrentValue(value)
+    const onInput = (val: string) => {
+      // const input = event.target as HTMLInputElement
+      // const val = input.value
+
+      currentValue.value = setCurrentValue(val)
+      const input = baseInput.value?.input as HTMLInputElement
+      console.log(baseInput.value)
+      input.value = currentValue.value.toString()
       emit('input', currentValue.value)
       emit('update:modelValue', currentValue.value)
-      baseInput.value &&
-        baseInput.value.updateValue(currentValue.value.toString())
     }
     const onBlur = () => {
-      console.log('f')
+      console.log('onBlur')
     }
-    // const displayValue = computed(() => {
-    //   return currentValue.value
-    // })
     return () => {
       return (
-        <DInput
-          ref={baseInput}
-          from="number"
-          modelValue={currentValue.value.toString()}
-          onUpdate:modelValue={() => {
-            emit('update:modelValue', currentValue.value)
-          }}
-          onBlur={onBlur}
-          onInput={onInput}
-        ></DInput>
+        // <input
+        //   type="number"
+        //   value={currentValue.value}
+        //   onInput={onInput}
+        // ></input>
+        <div class="s-input-number">
+          <DInput
+            ref={baseInput}
+            type="number"
+            from="number"
+            max={max.value}
+            min={min.value}
+            modelValue={currentValue.value.toString()}
+            onUpdate:modelValue={() => {
+              emit('update:modelValue', currentValue.value)
+            }}
+            onBlur={onBlur}
+            onInput={onInput}
+          ></DInput>
+        </div>
       )
     }
   }
