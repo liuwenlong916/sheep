@@ -75,12 +75,20 @@ export default function useCore(innerData: Ref<IInnerTreeNode[]>): IUseCore {
   const getIndex = (id: string) => {
     return innerData.value.findIndex(item => item.id == id)
   }
+  const getSameLevelNodes = (node: IInnerTreeNode) => {
+    let result: IInnerTreeNode[] = []
+    result = innerData.value.filter(
+      item => item.level === node.level && item.id !== node.id
+    )
+    return result
+  }
   return {
     expandTree,
     getChildren,
     getExpandedChildren,
     getNode,
     getNodeById,
-    getIndex
+    getIndex,
+    getSameLevelNodes
   }
 }

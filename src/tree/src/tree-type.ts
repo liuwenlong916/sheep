@@ -17,6 +17,10 @@ export const treeProps = {
   dragdrop: {
     type: [Boolean, Object] as PropType<IDragdrop>,
     default: false
+  },
+  accordion: {
+    type: Boolean,
+    default: false
   }
 } as const
 

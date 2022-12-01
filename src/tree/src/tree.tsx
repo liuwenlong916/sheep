@@ -7,8 +7,8 @@ export default defineComponent({
   name: 'DTree',
   props: treeProps,
   setup(props: TreeProps, content: SetupContext) {
-    const { data } = toRefs(props)
-    const { slots, expose } = content
+    const { data, accordion } = toRefs(props)
+    const { slots } = content
     // const {
     //   expandTree,
     //   toggleNode,
@@ -47,12 +47,15 @@ export default defineComponent({
                   slots.expendIcon ? (
                     slots.expendIcon({
                       toggleNode: usePlugins.toggleNode,
-                      treeNode
+                      treeNode,
+                      accordion: accordion.value
                     })
                   ) : (
                     <DTreeNodeToggle
                       expended={!!treeNode.expended}
-                      onClick={() => usePlugins.toggleNode(treeNode)}
+                      onClick={() =>
+                        usePlugins.toggleNode(treeNode, accordion.value)
+                      }
                     ></DTreeNodeToggle>
                   ),
                 loading: () =>

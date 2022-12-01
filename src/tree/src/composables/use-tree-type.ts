@@ -11,10 +11,11 @@ export type IUseCore = {
   getNode: (node: IInnerTreeNode) => IInnerTreeNode | undefined
   getNodeById: (id: string) => IInnerTreeNode | undefined
   getIndex: (id: string) => number
+  getSameLevelNodes: (node: IInnerTreeNode) => IInnerTreeNode[]
 }
 //展开折叠
 export type IUseToggle = {
-  toggleNode: (treeNode: IInnerTreeNode) => void
+  toggleNode: (treeNode: IInnerTreeNode, accordion: boolean) => void
 }
 
 export type IUseCheck = {

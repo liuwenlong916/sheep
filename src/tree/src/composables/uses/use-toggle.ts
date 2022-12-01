@@ -8,8 +8,8 @@ export default function useToggle(
   content: SetupContext,
   { loadLazyNodes }: IUseLazyLoad
 ): IUseToggle {
-  const toggleNode = (node: IInnerTreeNode) => {
-    const { getNode } = core
+  const toggleNode = (node: IInnerTreeNode, accordion: boolean) => {
+    const { getNode, getSameLevelNodes } = core
     const cur = getNode(node)
     if (cur) {
       if (!!cur.lazyLoad) {
@@ -17,6 +17,12 @@ export default function useToggle(
         loadLazyNodes(cur)
       } else {
         cur.expended = !cur.expended
+      }
+      if (accordion) {
+        const sameLevels = getSameLevelNodes(cur)
+        sameLevels.map(item => {
+          item.expended = false
+        })
       }
     }
   }

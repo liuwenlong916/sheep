@@ -27,7 +27,6 @@ export default defineComponent({
 
       currentValue.value = setCurrentValue(val)
       const input = baseInput.value?.input as HTMLInputElement
-      console.log(baseInput.value)
       input.value = currentValue.value.toString()
       emit('input', currentValue.value)
       emit('update:modelValue', currentValue.value)

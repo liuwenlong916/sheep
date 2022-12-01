@@ -10,27 +10,30 @@ export default defineComponent({
   setup(props: InputProps, { emit, expose }) {
     const { modelValue } = toRefs(props)
     const input = ref()
+    const inputValue = ref()
     const onInput = (event: Event) => {
-      const val = (event.target as HTMLInputElement).value
+      inputValue.value = (event.target as HTMLInputElement).value
       if (props.from === 'formItem') {
         const formItem = inject('formItemContext') as ItemContext
         formItem && formItem.validator()
       }
-      emit('input', val)
-      emit('update:modelValue', val)
+      emit('input', inputValue.value)
+
+      emit('update:modelValue', inputValue.value)
     }
     const onBlur = (e: Event) => {
       console.log('blur', e)
     }
+    const val = computed(() => {
+      return modelValue.value
+    })
     expose({ input })
     return () => {
       return (
         <div class="s-input">
           <input
-            style="appearance: none;"
             ref={input}
-            value={modelValue.value}
-            {...props}
+            value={val.value}
             onInput={onInput}
             type={props.type}
             onBlur={onBlur}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // # 闭包
+
+    // 闭包就是每次调用外层函数时，临时创建的函数作用域对象（无法释放）
+
+    // 作用域，作用域链函数树执行过程中会一级一级向外寻找，这就是作用域链，函数执行完成后，作用域就会被释放。函数只会清空自己生成的作用域，函数返回一个函数（）函数执行时，创建作用域，当函数作用域中的变量，被其他方法使用函数执行完后，由于该作用域被其他函数引用，导致无法释放作用域形成闭包
+
+    // 一句话概括：闭包如何形成外层函数调用后，外层函数的作用域对象，被返回的内层函数的作用域链引用着，无法释放，就形成了闭包对象
+
+    // 闭包缺点: 由于闭包藏得很深几乎找不到所以，极容易造成内存泄漏
+    function fun(n, o) {
+      console.log(o)
+      return {
+        fun: function (m) {
+          return fun(m, n)
+        }
+      }
+    }
+
+    var a = fun(0)
+    a.fun(1)
+    a.fun(2)
+    a.fun(3)
+    var b = fun(0).fun(1).fun(2).fun(3)
+  </script>
+</body>
+
+</html>

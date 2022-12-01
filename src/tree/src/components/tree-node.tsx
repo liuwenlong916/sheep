@@ -1,5 +1,5 @@
 import { defineComponent, inject, toRefs, ref } from 'vue'
-import { IInnerTreeNode } from '../tree-type'
+// import { IInnerTreeNode } from '../tree-type'
 import { TreeNodeProps, treeNodeProps } from '../tree-node-type'
 import { TreeUtils } from '../composables/use-tree-type'
 

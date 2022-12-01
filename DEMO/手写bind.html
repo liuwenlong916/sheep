@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    Function.prototype.myBind = function (...arg) {
+      console.log('myBind')
+      let org = this;//闭包
+      return function (...arg2) {
+        const that = (arg.length > 0 && arg.shift())
+
+        const arg3 = [...arg, ...arg2];
+        // org.call(that, ...arg3);
+        org.call(that, arg3)
+      }
+    }
+    function jsq(base, bun1, bun2) {
+      console.log(`${this.name}:${base + bun1 + bun2}`)
+    }
+    let li = { name: "lilei" }
+    let jsq2 = jsq.bind(li, 1000)
+    jsq2(10, 20)
+    jsq2(42, 20)
+    jsq2(20, 20)
+
+    let jsqMy = jsq.myBind(li, 1000)
+    jsq2(10, 20)
+    jsq2(42, 20)
+    jsq2(20, 20)
+
+  </script>
+</body>
+
+</html>
