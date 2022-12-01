@@ -1,8 +1,8 @@
-import { ExtractPropTypes } from 'vue'
-
+import { ExtractPropTypes, PropType } from 'vue'
+export type IModelValueType = string | number
 export const inputNumberProps = {
   modelValue: {
-    type: Number,
+    type: [String, Number] as PropType<IModelValueType>,
     default: null
   },
   step: {

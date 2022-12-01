@@ -22,7 +22,12 @@ const val = ref('2')
 
 ```vue
 <template>
-  <d-input-number v-model="val" :max="10"></d-input-number>
+  <d-input-number
+    v-model="val"
+    :max="10"
+    :step="0.01"
+    :precision="3"
+  ></d-input-number>
   {{ val }}
 </template>
 <script setup>

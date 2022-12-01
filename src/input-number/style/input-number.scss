@@ -1,5 +1,10 @@
 .s-input-number {
-  /* your component style */
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  line-height: 38px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
@@ -7,4 +12,50 @@
   input[number] {
     -moz-appearance: textfield;
   }
+  input {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    // border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    text-align: center;
+  }
+  &__decrease,
+  &__increase {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    width: 40px;
+    height: auto;
+    text-align: center;
+    background: #f5f7fa;
+    color: #606266;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  &__decrease {
+    left: 1px;
+    border-radius: 4px 0 0 4px;
+    border-right: 1px solid #dcdfe6;
+  }
+  &__increase {
+    right: 1px;
+    border-radius: 0 4px 4px 0;
+    border-left: 1px solid #dcdfe6;
+  }
+}
+
+.is_disabled {
+  color: #c0c4cc;
+  cursor: not-allowed !important;
 }

@@ -23,6 +23,7 @@ export default defineComponent({
     }
     const onBlur = (e: Event) => {
       console.log('blur', e)
+      emit('blur')
     }
     const val = computed(() => {
       return modelValue.value
