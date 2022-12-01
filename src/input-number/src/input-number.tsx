@@ -2,7 +2,7 @@ import { defineComponent, toRefs, ref, computed } from 'vue'
 import { InputNumberProps, inputNumberProps } from './input-number-type'
 import { DInput } from '../../input'
 import '../style/input-number.scss'
-import useInputNumber from './use-input-number'
+import useInputNumber from './composables/use-input-number'
 export default defineComponent({
   name: 'DInputNumber',
   props: inputNumberProps,

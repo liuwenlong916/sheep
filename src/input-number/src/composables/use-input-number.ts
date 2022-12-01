@@ -1,7 +1,8 @@
 import { ref, computed } from 'vue'
-import { InputNumberProps } from './input-number-type'
+import { InputNumberProps } from '../input-number-type'
+import { IInputNumber } from './use-input-numer-type'
 
-export default function useInputNumber(props: InputNumberProps) {
+export default function useInputNumber(props: InputNumberProps): IInputNumber {
   const currPrecision = computed(() => {
     const temp = getPrecision(props.step)
     return temp > props.precision ? temp : props.precision
