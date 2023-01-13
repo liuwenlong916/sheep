@@ -5,4 +5,4 @@
 
 ## 注意事项：
 1. props属性定义必填时，必须 as const ,因为 ts中required:true是被认为在这个对象上是必须的，所以会被消除掉
-2. 循环nodes必须用map返回一个新数组，forEach不返回数组不行 
+2. 循环nodes添加组件时，必须用map返回一个新数组，forEach不返回数组不行 
