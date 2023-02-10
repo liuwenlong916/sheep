@@ -451,6 +451,14 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 1. loader 其实让 webpack 可以解析更多文件类型（默认仅支持 js 和 json），
 2. plugin 可以扩展 webpack 功能，可以在 webpack 打包过程中生命周期钩子插入各种逻辑，改变输出结果，不针对某一类型
 
+## 手写 loader
+1. 本质就是个方法，接受内容，处理后的内容返回
+2. 配置resolveLoader.modules = ['./node_modules','./loaders']，查找路径
+
+## 常用plugin
+1. cleanwebpack-plugin 清除dist
+2. htmlwebpackplugin 创建引用输出文件的index.html
+
 ## webpack 优化性能
 
 1. 使用 treeShaking 删除未被使用的代码，
