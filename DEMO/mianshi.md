@@ -418,20 +418,6 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 5. 对 CommonJS、ESM 实现兼容
 6. webpack 处理程序时，会构建一个依赖图谱，依次打包各个模块，生成 bundle
 
-## commonJS 和 ES Module 区别
-
-1. commonJS 是值导入，ESM 是引用导入
-2. CommonJS 运行时加载，ESM 是编译输出
-3. CommonJS 单个导出，ESM 可以导出多个，默认导出只有一个
-4. ESM 只能写在头部（import()可以动态导入）
-5. CommonJS this 指向当前模块，ESM this 是 undefined
-
-## treeShaking
-
-由于 CommonJS 规范无法确定实际运行时是否需要某个模块，所以 CommonJS 不适合 tree-shaking
-
-1. ES Module 引入进行静态分析，编译时能够正确判断加载了哪些模块
-2. 未被引用或使用的模块/变量删除
 
 ## loader 和 plugin 区别
 
@@ -481,11 +467,20 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 3. 通过 CORS 请求模块
 4. script 标签延迟执行，相当于 defer
 
-### esm 和 commonjs 区别
+## commonJS 和 ES Module 区别
 
-1. esm 是导入引用，原始模板更新，引用文件也会更新
-2. commonjs 是导入值
-3. esm 可以导入 commonjs，commonjs 不可以导入 esm
+1. commonJS 是值导入，ESM 是引用导入,引用文件也会更新
+2. CommonJS 运行时加载，ESM 是编译输出
+3. CommonJS 单个导出，ESM 可以导出多个，默认导出只有一个
+4. ESM 只能写在头部（import()可以动态导入）
+5. CommonJS this 指向当前模块，ESM this 是 undefined
+
+## treeShaking
+
+由于 CommonJS 规范无法确定实际运行时是否需要某个模块，所以 CommonJS 不适合 tree-shaking
+
+1. ES Module 引入进行静态分析，编译时能够正确判断加载了哪些模块
+2. 未被引用或使用的模块/变量删除
 
 ### defer 和 async 区别
 
