@@ -433,6 +433,11 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 1. ES Module 引入进行静态分析，编译时能够正确判断加载了哪些模块
 2. 未被引用或使用的模块/变量删除
 
+## loader 和 plugin 区别
+
+1. loader 其实让 webpack 可以解析更多文件类型（默认仅支持 js 和 json），
+2. plugin 可以扩展 webpack 功能，可以在 webpack 打包过程中生命周期钩子插入各种逻辑，改变输出结果，不针对某一类型
+
 ## webpack loader 原理
 
 1. webpack 打包默认仅支持 js 和 json，打包其他类型文件，如 css html 等需要额外 loader
@@ -444,16 +449,19 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 ## webpack plugin 原理
 
 1. 内部包含 apply 方法的类
-2.
-
-## loader 和 plugin 区别
-
-1. loader 其实让 webpack 可以解析更多文件类型（默认仅支持 js 和 json），
-2. plugin 可以扩展 webpack 功能，可以在 webpack 打包过程中生命周期钩子插入各种逻辑，改变输出结果，不针对某一类型
+2. 丰富webpack功能，可以在webpack整个打包过程中任意钩子里
 
 ## 手写 loader
 1. 本质就是个方法，接受内容，处理后的内容返回
 2. 配置resolveLoader.modules = ['./node_modules','./loaders']，查找路径
+
+## 常用loader
+1. style-loader css-loader sass-loader postcss-loader(各个浏览器前缀)
+2. filie-loader url-loader(设置文件阈值，小的生成base64)
+3. babel-loader es6转es5
+4. vue-loader 
+5. eslint-loader
+
 
 ## 常用plugin
 1. cleanwebpack-plugin 清除dist
