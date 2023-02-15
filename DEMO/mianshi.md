@@ -459,6 +459,10 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 2. cache-loader 缓存，处理过的代码不再重复处理
 3. 并行处理，使用 happypack 并行编译 loader， Thread-loader 多进程方式运行资源加载逻辑
 4. esBuild
+5. 懒加载页面和组件import()
+6. 使用loading美化等待时间
+7. 长列表虚拟滚动
+8. 组件库按需引入
 
 ## ESModule 特性
 
