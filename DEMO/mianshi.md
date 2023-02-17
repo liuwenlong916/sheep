@@ -343,7 +343,6 @@ view->dom模型，
 viewModel->视图模型，实例。相当于一个桥梁
 
 
-
 ## vue 设计思路
 
 1. 声明式 declarative：
@@ -371,6 +370,18 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 ### beforeMounte
 
 ### mounted
+
+## 虚拟dom
+1. 一个描述真是dom的js对象
+2. template通过编辑生成render函数，执行render函数生成vnode
+3. 更新过程中通过diff算法比较新旧两个vnode，尽可能减少真实dom的操作
+
+## diff算法
+1. 深度优先，同层比较
+2. 比较节点是否是同类型，不同删除重建
+3. 文本节点更新文本
+4. 元素节点递归比较子节点
+5. 首首比较，尾尾比较，首尾比较，尾首比较；
 
 ## computed 和 watch 的区别，是否可以使用异步
 
