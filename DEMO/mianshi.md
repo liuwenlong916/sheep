@@ -430,6 +430,12 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 2. CORS：后端响应头设置允许访问源，告诉浏览器允许接受数据，Access-Control-Allow-Origin
 3. 代理：开发过程devserver.proxy，服务器nginx反向代理
 
+## 兼容ie
+
+1. babel和corejs将es6转es5，
+2. 第三方库（node_modules目录下的文件）默认不会转
+3. 配置transpileDependencies指定转码目录
+
 
 # webpack
 
