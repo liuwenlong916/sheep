@@ -337,6 +337,13 @@ class Child extends Person {
 
 # vue
 
+## MVVM模型
+model->data数据
+view->dom模型，
+viewModel->视图模型，实例。相当于一个桥梁
+
+
+
 ## vue 设计思路
 
 1. 声明式 declarative：
