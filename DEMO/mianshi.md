@@ -12,6 +12,11 @@
 10. for of遍历(只可循环可迭代数据)
 ## var、let 和 const 区别
 
+1. var 变量会提升，全局会放到 window 里
+2. var 可以重复生命
+3. const let 是块级作用域
+4. const 定义后不可修改，但是引用对象内部属性可修改。
+
 ## Promise
 1. 两个队列，
 2. resolve和reject方法（通过微任务清空各自队列）
@@ -19,11 +24,6 @@
 4. catch接受一个参数，加入reject队列
 5. promise构造函数，传入resolve和reject方法立即执行传入方法
 6. 返回一个promise
-
-1. var 变量会提升，全局会放到 window 里
-2. var 可以重复生命
-3. const let 是块级作用域
-4. const 定义后不可修改，但是引用对象内部属性可修改。
 
 ## cookie、 localStroage 和 sessionStroage 区别
 
