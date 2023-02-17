@@ -390,8 +390,8 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 
 ## vue 双向绑定的原理
 
-1.  数据劫持，监听数据变化，数据变化时，
-2.  观察者模式： TODO
+1. Object.definProperty的get/set进行数据拦截，重构数组更新方法，
+2. 发布订阅模式实现数据绑定
 
 ## proxy 和 Object.defineProperty)()
 
@@ -419,7 +419,7 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 1. proxy实现真正的代理
 2. composition API：方法话，实例化Vue（CreatApp）定义响应式数据，计算属性， 任意位置可以定义
 3. 组件引用即可使用，不再需要components属性
-4. 合并v-model和asyn，一个组件可以定义多个v-model(默认还是只有一个，可以通过冒号（:）定义不同)
+4. 合并和asyn，一个组件可以定义多个v-model(默认还是只有一个，可以通过冒号（:）定义不同)
 5. ts重构
 6. 删除vue2中使用浏览器方法，多端支持更好
 
