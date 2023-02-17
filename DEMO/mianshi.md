@@ -407,6 +407,14 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 1. $router 获取router实例，可以访问整个路由内容，$router.option.routes；或者当前项目路由拦截方法等
 2. $route 仅获取当前路由信息，主要用来获取参数，只读不可修改
 
+## vue3 新特性
+1. proxy实现真正的代理
+2. composition API：方法话，实例化Vue（CreatApp）定义响应式数据，计算属性， 任意位置可以定义
+3. 组件引用即可使用，不再需要components属性
+4. 合并v-model和asyn，一个组件可以定义多个v-model(默认还是只有一个，可以通过冒号（:）定义不同)
+5. ts重构
+6. 删除vue2中使用浏览器方法，多端支持更好
+
 # webpack
 
 ## 对 webpack 认识
