@@ -12,6 +12,14 @@
 10. for of遍历(只可循环可迭代数据)
 ## var、let 和 const 区别
 
+## Promise
+1. 两个队列，
+2. resolve和reject方法（通过微任务清空各自队列）
+3. then方法接受两个参数，一个加入resolve队列，一个加入reject
+4. catch接受一个参数，加入reject队列
+5. promise构造函数，传入resolve和reject方法立即执行传入方法
+6. 返回一个promise
+
 1. var 变量会提升，全局会放到 window 里
 2. var 可以重复生命
 3. const let 是块级作用域
