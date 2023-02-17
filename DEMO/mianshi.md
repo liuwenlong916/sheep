@@ -415,6 +415,14 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 5. ts重构
 6. 删除vue2中使用浏览器方法，多端支持更好
 
+## 跨域
+浏览器同源策略导致（协议，地址，端口）
+解决方法
+1. jsonp：使用script/img标签的src属性，调用get请求返回
+2. CORS：后端响应头设置允许访问源，告诉浏览器允许接受数据，Access-Control-Allow-Origin
+3. 代理：开发过程devserver.proxy，服务器nginx反向代理
+
+
 # webpack
 
 ## 对 webpack 认识
@@ -526,3 +534,4 @@ location ^~/user{
 ## 前缀替换
 1. 加斜杠/   location ^~/user/
 2. rewrite ^/user/(.*)$ /$1 break;
+
