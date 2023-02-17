@@ -516,3 +516,13 @@ node --experimental-modules index.mjs
 # node
 
 TODO
+
+
+# nginx
+## 反向代理
+location ^~/user{
+  proxy_pass:'http://1.1.1.1:80'
+}
+## 前缀替换
+1. 加斜杠/   location ^~/user/
+2. rewrite ^/user/(.*)$ /$1 break;
