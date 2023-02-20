@@ -446,6 +446,12 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 2. defineProperty 无法拦截添加删除属性，是能使用$set，无法劫持数组变化，
 3. proxy 是对整个对象的代理，所有问题都解决了，不兼容 ie
 
+
+## 异步组件
+
+defineAsyncComponent()
+
+
 ## vue 通讯方式
 
 1. props 父传子
