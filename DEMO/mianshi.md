@@ -10,6 +10,18 @@
 
 # css
 
+## 常用选择器
+按优先级
+1. style内联选择器
+2.  id选择器 #id{}
+3. class 类别选择器
+4. 属性选择器 [属性=值]{}
+5. 标签选择器
+6. 继承选择器
+
+## 水平垂直居中
+1. flex设置 ：justify-content设置主轴 以及align-items设置交叉轴
+2.  text-align: center
 
 # js
 ## es6 新特性
