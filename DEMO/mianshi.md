@@ -478,6 +478,7 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 2. loader 通过不同的加载器（loader），对不同类型的文件进行处理，并将结果交给 webpack 处理
 3. loader 其实就是个方法，接受上一个 loader 返回代码/原始文件内容，对内容进行处理，并返回新的内容
 4. 分同步 loader 和异步 loader
+5. 异步loader使用 async()返回一个方法，返回内容
 5. babel loader 可以把 es6 的 js 文件打包成 es5
 
 ## webpack plugin 原理
