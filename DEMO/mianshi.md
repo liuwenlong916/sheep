@@ -1,3 +1,16 @@
+# html
+## DOCTYPE
+1. 定义文件类型
+
+## html5新增标签
+1. 语义化标签：header nav aside footer section
+2. input 增加form相关类型：email 等
+3. 音频,视频(audio,video)
+4. Canvas
+
+# css
+
+
 # js
 ## es6 新特性
 1. 块级作用域 let const
