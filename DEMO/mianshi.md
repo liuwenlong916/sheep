@@ -603,4 +603,76 @@ location ^~/user{
 ## 前缀替换
 1. 加斜杠/   location ^~/user/
 2. rewrite ^/user/(.*)$ /$1 break;
+# merge
+## Loader与plugin的区别？
+Loder本质就是一个函数，在该函数中对接收到的内容进行转换，并返回转换后的结果，
+因为webPack只认识javascript,所以Loader就承担了翻译官，对其他类型的资源做转译工作；
+plugin就是插件，插件可以扩展webpack功能，在webpack运行生命周期中会广播中许多事件，
+plugin可以监听这些事件，并在合适的时机通过webpack提供的api改变输出结果；
+## webpack的构建流程？
+初始化参数：从配置文件与shell语句中读取与合并参数，得出最终参数
+开始编译：从上一步得到的最终化参数初始化compiler对象，加载所有配置的插件，执行对象中的run方法，开始执行编译
+确定入口：根据配置中的entry找到所有入口文件
+编译模块：从入口文件出发，调用所有配置好的loader对模块进行编译，再找出该模块依赖的模块，再递归本步骤，直到所有入口依赖的文件都经过本步骤
+完成模块编译：得到每个模块被翻译后的最终内容
+输出资源：根据入口和模块之间的关系，组装成一个个包含多个模块的chunk，再把每一个chunnk转换成一个单独的文件加入到输出列表
+输出完成：确定后输出内容，把输出文件内容写入到文件系统
+
+## webpack开发时会用到那些可以提高效率的插件？
+webpack-dashbord:更友好的展示相关打包信息；
+webpack-merge:提供公共配置，减少重复配置代码
+speed-mearsure-webpack-plugin:简称SMP,分析webpack打包过程中loader和plugin耗时，有助于找到构建过程中的性能瓶颈
+size-plugin:监控资源体积变化；
+holdModelReplacementPlugin:模块热更新
+
+## source map是什么？生产环境怎么用？
+source map是将编译、打包、压缩后的代码映射为源代码的过程，
+打包压缩后的代码不具有可读性，想要调试就需要source map,
+map文件只要不打开开发者工具，浏览器是不会加载的
+
+## 线上处理方法：
+hidden-source-map:借助第三方错误监控平台Sentry使用
+no-source-map:只会显示具体行数以及查看源代码错误栈，安全性比souce map高
+source map :通过nginx设置将.map文件只对白名单开放（公司内网）
+
+
+## 模块打包原理？
+webpack实际上为每个模块创造了一个可以导入和导出的环境，本质上并没有修改代码的执行逻辑，
+执行顺序，和模块加载顺序；
+
+## webpack监听原理？
+在发现源代码发生变化时，自动重新构建出新的输出文件.webpack开启监听模式有两种：
+
+启动webpck命令时，带上————watch参数
+在配置webpack.config.js中设置wacth:true
+缺点：
+
+原理：
+轮询判断文件的最后编辑时间是否变化，如果某个文件发生变化，并不会立刻告诉监听者，而是先缓存起来，等aggregateTimeout后再执行
+
+## webpack热更新原理？
+核心就是客户端从服务端拉取更新的后文件，准确的说是chunk diff,
+实际上WDS与浏览器之间维护了websocket，当本地资源发生变化时，WDS会向浏览器推送更新，
+并附上上构建时的hash,让客户端与上一次资源做对比，
+客户端对比出差异后会向WDS发起ajax请求来获取更新后的内容
+
+## 如何优化webapck的构建速度？
+使用高版本webpack和node.js
+多进程
+压缩代码
+多进程并行压缩
+图片压缩
+合理使用缓存
+开启缓存
+
+
+## 说一说axios的拦截器原理及应用？
+axios分为请求拦截器和响应拦截器；请求拦截器用于接口在请求前做的处理，如每个请求添加token、时间戳等；响应拦截器用于在接口返回之后做的处理，如对返回的状态进行判断等；
+
+拦截器原理：
+创建一个chn数组，数组中保存了拦截器相应的方法以及dispachRequest，把请求拦截器放在dispachRequest的前面，响应拦截器放在dispachRequest的后面，把请求拦截器和响应拦截器用forEach将他们分别unshift和push到数组中，为了保证执行顺序，需要用promise,以出对列的方式对chn数组中的方法挨个执行
+
+Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。从浏览器中创建 XMLHttpRequests,从 node.js 创建 http 请求,支持 Promise API,可拦截请求和响应，可转换请求数据和响应数据，可取消请求，可自动转换 JSON 数据，客户端支持防御 XSR
+ 
+
 
