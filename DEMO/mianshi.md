@@ -490,6 +490,23 @@ defineAsyncComponent()
 2. 第三方库（node_modules目录下的文件）默认不会转
 3. 配置transpileDependencies指定转码目录
 
+## 性能优化
+### 首屏加载优化
+1. 路由懒加载import()
+2. 组件懒加载（弹窗等）
+3. treeShaking
+4. 骨架屏vue-skeleton-webpack-plugin
+5. 长列表虚拟滚动
+6. web worker优化复杂计算
+7. 图片优化：1 懒加载，2 使用字体图标 3 url-loader 较小图片使用base64方式
+
+### 打包优化
+1. --report 或webpack-bundle-analyzer插件查看打包体积
+2. externals 打包时排除依赖包，使用cdn方式引入<script src=''></script>
+3. 组件库按需引入
+4. HappyPack 多线程打包
+5. Gzip压缩：compression-webpack-plugin插件
+6. 
 
 # webpack
 
