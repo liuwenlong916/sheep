@@ -27,14 +27,16 @@
 ## es6 新特性
 1. 块级作用域 let const
 2. Symbol数据类型
-3. class
-4. 解构赋值 (...)
-5. 模块导入导出(import/export)
-6. Set/Map数据类型
-7. Proxy代理
-8. 函数设置默认值
-9. 新增API，如isArray、assign
-10. for of遍历(只可循环可迭代数据)
+3. 模板字符串
+4. Generator  async/await
+5. class
+6. 解构赋值 (...)
+7. 模块导入导出(import/export)
+8. Set/Map数据类型
+9. Proxy代理
+10. 函数设置默认值
+11. 新增API，如isArray、assign
+12. for of遍历(只可循环可迭代数据)
 ## var、let 和 const 区别
 
 1. var 变量会提升，全局会放到 window 里
@@ -204,7 +206,9 @@ function arrayToTree(array, parentId = 0) {
 1. 浅拷贝只拷贝一层，基本类型值复制，引用类型如果属性是个对象，指向还是同一地址，
 2. 深拷贝彻底分开，之间毫无影响
 3. 可以使用 JSON.parse(JSON.stringify())实现，但是不支持 undefined、Symbol 和方法拷贝
-4. 手写递归方法赋值
+4. es6解构实现浅拷贝
+5. Object.assign()浅拷贝
+6. 手写递归方法赋值
 
 ```js
 //深拷贝
