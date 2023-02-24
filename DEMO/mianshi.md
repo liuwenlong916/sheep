@@ -451,6 +451,13 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 2. defineProperty 无法拦截添加删除属性，是能使用$set，无法劫持数组变化，
 3. proxy 是对整个对象的代理，所有问题都解决了，不兼容 ie
 
+## 透传/非属性特性
+
+1. props无法获取 style class id属性
+2. $attrs 可以获取id
+3. 自动添加到根节点
+4. vue3中删除$Listeners
+5. vue3中click事件会自动添加到根节点
 
 ## 异步组件
 
