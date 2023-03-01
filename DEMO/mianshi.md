@@ -481,6 +481,19 @@ defineAsyncComponent()
 1. $router 获取router实例，可以访问整个路由内容，$router.option.routes；或者当前项目路由拦截方法等
 2. $route 仅获取当前路由信息，主要用来获取参数，只读不可修改
 
+## 修饰符
+1. lazy input事件不立即触发，change再触发
+2. trim 删除两边空格
+3. number 转
+4. stop 阻止冒泡
+5. ptevent阻止默认事件 a标签常用
+6. once触发一次
+
+## nexttick
+事件循环原理
+1. 应用场景：数据更新后想立马操作dom
+2. 原理：操作dom过程放入微任务队列当中，等更新dom执行完成后执行
+
 ## vue3 新特性
 1. proxy实现真正的代理
 2. composition API：方法话，实例化Vue（CreatApp）定义响应式数据，计算属性， 任意位置可以定义
