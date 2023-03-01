@@ -655,13 +655,35 @@ TODO
 
 
 # nginx
+
 ## 反向代理
 location ^~/user{
   proxy_pass:'http://1.1.1.1:80'
 }
+
 ## 前缀替换
 1. 加斜杠/   location ^~/user/
-2. rewrite ^/user/(.*)$ /$1 break;
+2. rewrite ^/user/(.*)$ /$1 break
+
+## 隐藏版本号：
+server_tokens:off
+
+## 后缀配置，指定静态资源目录
+location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ { 
+    root           html/static/;
+}
+
+## 限制访问
+  location /static {
+    root               html;
+    # allow 允许
+    allow              39.xxx.xxx.xxx;
+    # deny  拒绝
+    deny               all;
+  }
+
+
+
 # merge
 ## Loader与plugin的区别？
 Loder本质就是一个函数，在该函数中对接收到的内容进行转换，并返回转换后的结果，
