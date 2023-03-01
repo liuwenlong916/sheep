@@ -513,6 +513,12 @@ defineAsyncComponent()
 7. v-if 和v-for优先级调换，v-if优先级更高
 8. 删除vue2中使用浏览器方法，多端支持更好
 
+## ref 和reactive区别
+1. ref可以定义基础类型，也可以定义引用类型（内部调用reactive）
+2. reactive不可以定义基础类型
+3. watch监听引用类型的ref需要设置deep:true，reactive不需要
+4. ref访问需要.value ，使用$ref可省略
+
 ## 跨域
 浏览器同源策略导致（协议，地址，端口）
 解决方法
