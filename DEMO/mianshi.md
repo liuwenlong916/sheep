@@ -62,6 +62,10 @@
 5. promise构造函数，传入resolve和reject方法立即执行传入方法
 6. 返回一个promise
 
+### catch参数和then的第二个参数区别
+1. catch(err) 等价于then(null, err)
+2. catch 可以捕获then中执行过程中的异常
+
 ## cookie、 localStroage 和 sessionStroage 区别
 
 1. localStroage 永久保存，sessionStroage 关闭当前会话清空
