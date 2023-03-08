@@ -3,6 +3,7 @@
 1. 定义文件类型
 
 ## html5新增标签
+目的：HTMl语义化可以让页面的内容结构化，以便于浏览器解析和搜索引擎解析，并且提高了代码的可读性便于代码维护
 1. 语义化标签：header nav aside footer section
 2. input 增加form相关类型：email 等
 3. 音频,视频(audio,video)
