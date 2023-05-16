@@ -211,6 +211,13 @@ function arrayToTree(array, parentId = 0) {
 }
 ```
 
+## 事件流
+1. 事件冒泡和事件捕获
+2. 执行顺序是： 向下捕获-target-冒泡
+3. 捕获默认关闭，addEventListion时设置第三个属性为true开启
+4. 冒泡默认开启，e.stopPropagation 阻止冒泡
+5. preventDefault 阻止默认事件
+
 ## 说一下浅拷贝和深拷贝的区别
 
 1. 浅拷贝只拷贝一层，基本类型值复制，引用类型如果属性是个对象，指向还是同一地址，
@@ -562,6 +569,13 @@ defineAsyncComponent()
 5. 对 CommonJS、ESM 实现兼容
 6. webpack 处理程序时，会构建一个依赖图谱，依次打包各个模块，生成 bundle
 
+## webpack打包原理
+1. fs.readfile读取入口文件
+2. babel/parser 将原始代码转成ast树
+3. @babel/traverse 收集依赖模块
+4. babel/core 和babel/preset将ast树转成浏览器可以识别的es5代码
+5. eval执行
+
 
 ## loader 和 plugin 区别
 
@@ -577,14 +591,12 @@ defineAsyncComponent()
 5. 异步loader使用 async()返回一个方法，返回内容
 5. babel loader 可以把 es6 的 js 文件打包成 es5
 
-## webpack plugin 原理
 
-1. 内部包含 apply 方法的类
-2. 丰富webpack功能，可以在webpack整个打包过程中任意钩子里
 
 ## 手写 loader
 1. 本质就是个方法，接受内容，处理后的内容返回
 2. 配置resolveLoader.modules = ['./node_modules','./loaders']，查找路径
+3. 异步loader使用this.async()返回结果，只能放最后执行
 
 ## 常用loader
 1. style-loader css-loader sass-loader postcss-loader(各个浏览器前缀)
@@ -592,7 +604,12 @@ defineAsyncComponent()
 3. babel-loader es6转es5
 4. vue-loader 
 5. eslint-loader
+6. 
+## webpack plugin 原理
 
+1. 内部包含 apply 方法的类，接受compiler
+2. compiler.hooks定义各种钩子函数，等待执行
+3. 丰富webpack功能，可以在webpack整个打包过程中任意钩子里
 
 ## 常用plugin
 1. cleanwebpack-plugin 清除dist
@@ -651,6 +668,12 @@ import 不支持导入变量，如 const im = './a.js' import from im
 node --experimental-modules index.mjs
 
 # node
+
+## npm run xxx执行过程
+1. 一些命令没有全局安装、配置环境变量，不能直接执行
+2. npm i 的时候会在node_modules/.bin创建可执行文件
+3. run的时候会去webpack.config script里查找命令
+4. 然后去.bin文件里找可执行文件执行
 
 TODO
 
