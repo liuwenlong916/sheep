@@ -21,8 +21,25 @@
 6. 继承选择器
 
 ## 水平垂直居中
-1. flex设置 ：justify-content设置主轴 以及align-items设置交叉轴
-2.  text-align: center
+1. flex设置 ：justify-content设置主轴center 以及align-items设置交叉轴center
+2. 绝对定位和margin:auto,top/left/right/bottom:0
+3. 转行内原始：lineheight
+
+## 响应式布局
+1. 媒体查询，@media screen and 根据宽高设置样式（max-width:300px ==> 小于300px才设置）
+2. 百分比布局
+3. rem布局
+
+## flex:1
+1.  flex:1 1 auto
+2.  flex-grow:1;扩大
+3.  flex-shrink:1;缩小
+4.   flex-basis:auto
+
+## 后代选择器和子类选择器区别
+1. 后代选择器用空格隔开，表示所有后代
+2. 子类选择器用 > 隔开，表示所有下一级所有后代
+
 
 # js
 ## es6 新特性
