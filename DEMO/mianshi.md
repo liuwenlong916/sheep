@@ -67,6 +67,26 @@
 2. apply call 是绑定新this立即执行函数
 3. apply通过数组接受参数，call
 
+## 手写 apply call bind 
+```javascript
+//apply
+Function.prototype._apply = function (target) {
+  console.log(target, this)
+  target['fn'] = this
+  let args = arguments[1]
+  result = args? target['fn'](args) :target['fn']()
+  return result
+}
+//call 
+Function.prototype._apply = function (target, ...args) {
+  console.log(target, this)
+  target['fn'] = this
+  result = args? target['fn'](...args) :target['fn']()
+  return result
+}
+//bind 返回一个方法，内部执行函数
+```
+
 ## 事件代理
 1. 利用事件冒泡，减少事件注册，节省内存
 2. 实现：事件绑定到父组件上
