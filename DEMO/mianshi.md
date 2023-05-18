@@ -507,6 +507,25 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 1. Object.definProperty的get/set进行数据拦截，重构数组更新方法，
 2. 发布订阅模式实现数据绑定
 
+## 响应式原理
+1. getter收集依赖，每个属性对应一个dep,页面使用到的添加一个watcher
+2. setter触发watcher更新视图
+3. 
+
+## keepalive原理
+1. 有三个属性include exclude max
+2. actived 和deactived两个钩子
+3. 组件切换销毁过程中，不会真正销毁，而是放到一个隐藏的容器里，重新加载的时候，在拿出来
+
+## ajax异步请求原理
+1. js是单线程，有请求会导致页面卡顿
+2. ajax请求接口不会影响主线程，请求成功后会执行回调函数
+3. 核心是XMLHttpRequest
+
+## router原理
+1. 分为hash和history模式
+2. 监听hashchange或者事件，然后读取路由地址，去路由表匹配对应的页面进行加载
+
 ## proxy 和 Object.defineProperty)()
 
 1. vue2 使用 defineProperty，vue3 使用 proxy
@@ -524,7 +543,15 @@ mounte：将组件数据和状态渲染到宿主原素上 mounted 钩子
 ## 异步组件
 
 defineAsyncComponent()
-
+## vue常用指令
+1. v-if
+2. v-show
+3.  v-model  
+4.  v-on 
+5.  v-once 
+6.  v-text 
+7.  v-html 
+8.  v-for
 
 ## vue 通讯方式
 
@@ -598,9 +625,12 @@ defineAsyncComponent()
 1. --report 或webpack-bundle-analyzer插件查看打包体积
 2. externals 打包时排除依赖包，使用cdn方式引入<script src=''></script>
 3. 组件库按需引入
-4. HappyPack 多线程打包
-5. Gzip压缩：compression-webpack-plugin插件
-6. 
+4. babel指定目录下的js文件，排除node_modules文件夹
+5. 缓存已编译文件，配置loader时，后面加上catchDirectory   loader:babel-loadr?catchDirectory=true
+6. happypack plugin开启多线程
+7. DllPlugin
+8. 启用gzip压缩
+9. tree shacking删除无用代码webpack5默认开启
 
 # webpack
 
